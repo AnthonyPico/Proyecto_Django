@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+{% block content %}
+{% load static %}
+
+<header class="row bg-white">
+   <div class="col-md-4">
+      <img src="{% static 'perfil.jpg'%}" alt="" width="350" height="350">
+   </div>
+
+   <div class="col-md-8 my-auto">
+      <h1> <strong> Soy AnthonyPico</strong></h1>
+      <h3>Estudiante de la ULEAM</h3>
+      <p>Lorem ipsum dolor sit, amet orum! Distinctio dignissimos vitae id totam atque sed explicabo sequi nesciunt ullam ex enim delectus ad officia quisquam eos laudantium, nihil ipsa maiores quis cum voluptatem suscipit. Ab quaerat dicta expedita in est, culpa beatae quidem recusandae, ea, ipsa magni? Suscipit incidunt sunt dolores deleniti recusandae odit! Praesentium voluptate nam mollitia quos iusto commodi nihil placeat unde incidunt vero, officia eaque animi asperiores perspiciatis nesciunt nobis dolore laboriosam odit itaque! Dignissimos, deserunt enim? Eius enim obcaecati voluptas nobis, voluptatum sint ab eveniet harum ad corrupti repellat mollitia.</p>
+      <a href="{% static 'curriculum.pdf' %}" class="btn btn-primary btn-lg rounded-0 my-3 ">Download CV</a>
+   </div>
+</header>
+<div class="row my-4 text-center">
+   <h1>Mis Proyectos</h1>
+   <p>The Asylum es una compañía estadounidense dedicada a la producción y distribución de cinematográfica 
+      que se enfoca en producciones de menor presupuesto, usualmente realizando películas directamente para 
+      vídeo. El estudio ha producido films que capitalizan producciones de estudios más grandes; estas 
+      películas han sido llamadas «mockbusters» por la prensa. A continuacion algunas de sus obras:</p>
+   {% for project in projects %}
+   <div class="col-md-4 p-4">
+      <div class="card bg-white card-project">
+         <img src="{{project.image.url}}" alt="{{project.title}}" class="card-img-top"/>
+         <div class="card-body">
+            <h2>{{project.title}}</h2>
+            <p>{{project.description}}</p>  
+            <br>    
+            {% if project.url %}
+                  <a href="{{project.url}}" class="btn btn-light rounded-0 btn-sm" target="_blank">{{project.url}}</a>
+            {% endif %}
+         </div>
+      </div>
+   </div>
+{% endfor %} 
+{% endblock %}
+</div>
+
+      
