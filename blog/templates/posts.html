@@ -18,8 +18,8 @@
       <div class="col-9">
 
         <h1>{{post.title}}</h1>
-        <p>{{post.description|striptags|truncatechars:250}}</p>
-        <p>{{post.date|date:'M d,Y'|upper}}</p>
+        <p>{{post.description|striptags|truncatechars:400}}</p>
+        <p>{{post.date|date:'F jS Y'|upper}}</p>
 
         <a href="{% url 'blog:post_detail' post.id %}" class="btn btn-primary">{{post.title}}</a>
       </div>
