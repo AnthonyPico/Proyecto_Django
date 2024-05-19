@@ -1,8 +1,11 @@
 {% extends 'layout.html' %}
+
 {% block content %}
 
+<!-- Título de la Página -->
 <h1 class="fs-2">Posts</h1>
-<h3>Informacion de las {{total_posts}} peliculas {{total_posts|pluralize}}</h3>
+<!-- Información de la Página (Segundo Titulo) -->
+<h3>Información de las {{ total_posts }} películas {{ total_posts|pluralize }}</h3>
 
 {% for post in posts %}
 
@@ -11,17 +14,21 @@
   <div class="card card-body bg-white">
     <div class="row">
 
+      <!-- Columna para la imagen -->
       <div class="col-3">
-        <img class="img-fluid" src="{{post.image.url}}" alt="{{post.title}}">
-
+        <img class="img-fluid" src="{{ post.image.url }}" alt="{{ post.title }}">
       </div>
+
+      <!-- Columna para el contenido del post -->
       <div class="col-9">
-
-        <h1>{{post.title}}</h1>
-        <p>{{post.description|striptags|truncatechars:400}}</p>
-        <p>{{post.date|date:'F jS Y'|upper}}</p>
-
-        <a href="{% url 'blog:post_detail' post.id %}" class="btn btn-primary">{{post.title}}</a>
+        <!-- Título del post -->
+        <h1>{{ post.title }}</h1>
+        <!-- Descripción del post, se elimina el HTML y se limita a 400 caracteres -->
+        <p>{{ post.description|striptags|truncatechars:400 }}</p>
+        <!-- Fecha del post en formato especificado y en mayúsculas -->
+        <p>{{ post.date|date:'F jS Y'|upper }}</p>
+        <!-- Enlace al detalle del post -->
+        <a href="{% url 'blog:post_detail' post.id %}" class="btn btn-primary">Seguir Leyendo</a>
       </div>
     </div>
   </div>
